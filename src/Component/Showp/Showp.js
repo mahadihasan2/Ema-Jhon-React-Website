@@ -4,6 +4,7 @@ import './Showp.css';
 
 const Showp = () => {
     const [products,setProduct]=useState([])
+    const [cart,setCart]=useState([])
     useEffect(()=>{
         fetch('products.json')
         .then(res=>res.json())
@@ -14,6 +15,8 @@ const Showp = () => {
     },[])
     const addToCart=(product)=>{
         console.log(product)
+        const newProduct = [...cart,product]
+        setCart(newProduct)
     }
 
     return (
@@ -31,6 +34,7 @@ const Showp = () => {
             </div>
             <div className="cart-container">
                 <h2>order Summary</h2>
+                <h3>Selected Item: {cart.length}</h3>
             </div>
         </div>
     );
